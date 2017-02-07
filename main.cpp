@@ -11,7 +11,7 @@ qDebug() << "Starting...";
 //int window_height = QApplication::desktop()->height();
 
 MainWindow w;
-
+w.setWindowTitle("Learn QT5 v0.0-1");
 /*
 QPushButton * quit_btn = new QPushButton;
 quit_btn->setParent(w.centralWidget());
