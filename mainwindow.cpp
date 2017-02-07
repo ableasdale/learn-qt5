@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // pointless button
     connect(ui->appendButton, &QPushButton::clicked, [this](){
+        ui->htmlBrowserPane->append("<h4>Heading</h4><p>Html Paragraph</p>");
         ui->plainTextEdit->appendPlainText(QString("Clicked!"));
     });
 
