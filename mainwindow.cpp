@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,6 +23,12 @@ MainWindow::MainWindow(QWidget *parent) :
     });
 
     // Quit button
+    connect(ui->quitButton, &QPushButton::clicked, [this](){
+        qDebug() << "Quitting Application...";
+        exit(0);
+        //SLOT(quit());
+    });
+
     /*connect(ui->quitButton,
             SIGNAL(clicked()),
 
