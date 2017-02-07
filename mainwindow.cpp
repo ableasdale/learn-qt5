@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->counter=0;
 
     // slider and progress bar
     connect(ui->horizontalSlider,
@@ -37,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->appendButton, &QPushButton::clicked, [this](){
         ui->htmlBrowserPane->append("<h4>Heading</h4><p>Html Paragraph</p>");
         ui->plainTextEdit->appendPlainText(QString("Clicked!"));
+        ui->lcdNumber->display(++counter);
     });
 
     // Quit button
