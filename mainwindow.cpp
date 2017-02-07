@@ -16,9 +16,23 @@ MainWindow::MainWindow(QWidget *parent) :
                 ui->progressBar,
                 SLOT(setValue(int)));
 
+    // ListView
+    // Create model
+    model = new QStringListModel(this);
+
+    // Make data
+    QStringList List;
+    List << "Clair de Lune" << "Reverie" << "Prelude";
+
+    // Populate our model
+    model->setStringList(List);
+
+    // Glue model and view together
+    ui->listView->setModel(model);
+
     /* Disable the load button as it's not yet implemented
     ui->loadButton->setEnabled(false); */
-
+    // Load Button
     connect(ui->loadButton, &QPushButton::clicked, [this](){
         qDebug() << "Loading a file...";
 
@@ -34,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
         //setToolTip(tr("Load contacts from a file"));
     });
 
-    // pointless button
+    // pointless append button :)
     connect(ui->appendButton, &QPushButton::clicked, [this](){
         ui->htmlBrowserPane->append("<h4>Heading</h4><p>Html Paragraph</p>");
         ui->plainTextEdit->appendPlainText(QString("Clicked!"));

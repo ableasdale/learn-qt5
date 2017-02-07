@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStringListModel>
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,8 @@ public:
 private:
     Ui::MainWindow *ui;
     int counter;
+    //QStringListModel model;
+    QStringListModel *model;
 };
 
 #endif // MAINWINDOW_H
