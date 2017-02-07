@@ -5,8 +5,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
+    connect(ui->horizontalSlider,
+                SIGNAL(valueChanged(int)),
+                ui->progressBar,
+                SLOT(setValue(int)));
 }
 
 MainWindow::~MainWindow()

@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
 QApplication a(argc, argv);
-qDebug() << "Hello World";
+qDebug() << "Starting...";
 
 //int window_width = QApplication::desktop()->width();
 //int window_height = QApplication::desktop()->height();
