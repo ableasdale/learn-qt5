@@ -2,10 +2,17 @@
 #include <QApplication>
 #include <QDebug>
 
+class Class {
+   int value ;
+public:
+   Class() ;
+};
+
+
 int main(int argc, char *argv[])
 {
 QApplication a(argc, argv);
-qDebug() << "Starting...";
+qDebug() << "Starting Application at..."; //+ new Class();
 
 //int window_width = QApplication::desktop()->width();
 //int window_height = QApplication::desktop()->height();

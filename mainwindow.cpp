@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,8 +15,23 @@ MainWindow::MainWindow(QWidget *parent) :
                 ui->progressBar,
                 SLOT(setValue(int)));
 
-    // Disable the load button as it's not yet implemented
-    ui->loadButton->setEnabled(false);
+    /* Disable the load button as it's not yet implemented
+    ui->loadButton->setEnabled(false); */
+
+    connect(ui->loadButton, &QPushButton::clicked, [this](){
+        qDebug() << "Loading a file...";
+
+        QString filename = QFileDialog::getOpenFileName();
+
+        QFile file(filename);
+         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+             return;
+
+        ui->plainTextEdit->appendPlainText(file.readAll());
+
+        file.close();
+        //setToolTip(tr("Load contacts from a file"));
+    });
 
     // pointless button
     connect(ui->appendButton, &QPushButton::clicked, [this](){
