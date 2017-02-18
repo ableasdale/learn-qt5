@@ -3,9 +3,9 @@
 #include <QDebug>
 
 class Class {
-   int value ;
+    int value;
 public:
-   Class() ;
+    Class();
 };
 
 
