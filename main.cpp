@@ -1,4 +1,8 @@
 #include "mainwindow.h"
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
 #include <QApplication>
 #include <QDebug>
 
@@ -11,8 +15,18 @@ public:
 
 int main(int argc, char *argv[])
 {
+    /* PUT Time - TODO - works but not with qDebug() */
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+    std::cout << std::put_time(&tm, "%d-%m-%Y %H-%M-%S") << std::endl;
+
 QApplication a(argc, argv);
-qDebug() << "Starting Application at..."; //+ new Class();
+/*auto t = std::time(nullptr);
+auto tm = *std::localtime(&t); */
+
+time_t _tm =time(NULL );
+struct tm * curtime = localtime ( &_tm );
+qDebug() << "Application Started on" << asctime(curtime);
 
 //int window_width = QApplication::desktop()->width();
 //int window_height = QApplication::desktop()->height();

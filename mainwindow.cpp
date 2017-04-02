@@ -64,7 +64,9 @@ MainWindow::MainWindow(QWidget *parent) :
         msgBox.addButton(QMessageBox::No);
         msgBox.setDefaultButton(QMessageBox::No);
         if(msgBox.exec() == QMessageBox::Yes) {
-            qDebug() << "Quitting Application...";
+            time_t _tm =time(NULL );
+            struct tm * curtime = localtime ( &_tm );
+            qDebug() << "Quitting Application on" << asctime(curtime);
             exit(0);
         }
     });
