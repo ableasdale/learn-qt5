@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -57,15 +58,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Quit button
     connect(ui->quitButton, &QPushButton::clicked, [this](){
-        qDebug() << "Quitting Application...";
-        exit(0);
-        //SLOT(quit());
+        // Dialogue box before quitting
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Quit Application");
+        msgBox.setText("Are you sure you want to quit the application?");
+        msgBox.setStandardButtons(QMessageBox::Yes);
+        msgBox.addButton(QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::No);
+        if(msgBox.exec() == QMessageBox::Yes) {
+            qDebug() << "Quitting Application...";
+            exit(0);
+        }
     });
-
-    /*connect(ui->quitButton,
-            SIGNAL(clicked()),
-
-            SLOT(quit())); */
 }
 
 MainWindow::~MainWindow()
