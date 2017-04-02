@@ -6,12 +6,12 @@
 #include <QApplication>
 #include <QDebug>
 
+/* I think(?) this appears to be getting used by the file dialogue... */
 class Class {
     int value;
 public:
     Class();
 };
-
 
 int main(int argc, char *argv[])
 {

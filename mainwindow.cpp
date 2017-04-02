@@ -34,10 +34,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Load Button
     connect(ui->loadButton, &QPushButton::clicked, [this](){
         // Done in the UI setToolTip(tr("Load contacts from a file"));
-        qDebug() << "Loading a file...";
+        qDebug() << "Loading contents of file " << QFileDialog::getOpenFileName();
 
+        // Or you can generate a QString first
         QString filename = QFileDialog::getOpenFileName();
-
         QFile file(filename);
          if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
              return;
