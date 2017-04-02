@@ -31,10 +31,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // Glue model and view together
     ui->listView->setModel(model);
 
-    /* Disable the load button as it's not yet implemented
-    ui->loadButton->setEnabled(false); */
     // Load Button
     connect(ui->loadButton, &QPushButton::clicked, [this](){
+        // Done in the UI setToolTip(tr("Load contacts from a file"));
         qDebug() << "Loading a file...";
 
         QString filename = QFileDialog::getOpenFileName();
@@ -46,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->plainTextEdit->appendPlainText(file.readAll());
 
         file.close();
-        //setToolTip(tr("Load contacts from a file"));
     });
 
     // pointless append button :)
@@ -58,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Quit button
     connect(ui->quitButton, &QPushButton::clicked, [this](){
-        // Dialogue box before quitting
+        // Show dialogue box before quitting
         QMessageBox msgBox;
         msgBox.setWindowTitle("Quit Application");
         msgBox.setText("Are you sure you want to quit the application?");

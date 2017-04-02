@@ -50,6 +50,9 @@ p, li { white-space: pre-wrap; }
       <height>32</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Load file from disk</string>
+    </property>
     <property name="text">
      <string>Load</string>
     </property>
